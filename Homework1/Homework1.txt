@@ -1,1 +1,38 @@
-Homework1 goes here!!!
+Nicholas C. Jerla --- PHY 410 HW #1
+
+	*** All place values are powers of two, 2^(N), with the first (left most) bit representing the sign of our numbers ***
+
+a) 10: requires 2^(5) = 5-Bits 
+
+	10 = 01010
+
+b) 436: requires 2^(10) = 10-Bits 
+
+	436 = 0110110100
+
+c) 1024: requires 2^(12) = 12-Bits 
+
+	1024 = 010000000000
+
+--------------------------------------
+
+	To write a negative number in (Two's Complement) binary, write it out in binary as if it were a positive number instead,
+flip all the bits, and add one to convert.
+
+d) -13: requires 2^(5) = 5-Bits 
+
+	(-)01101 --> flip bits --> 10010 --> add one --> 10011
+
+	-13 = 10011
+
+e) -1023: requires 2^(12) = 12-Bits 
+
+	(-)001111111111 --> flip bits --> 110000000000 --> add one --> 110000000001
+
+	-1023 = 110000000001
+
+f) -1024: requires 2^(12) = 12-Bits 
+
+	(-)010000000000 --> flip bits --> 101111111111 --> add one --> 110000000000
+
+	-1024 = 110000000000
