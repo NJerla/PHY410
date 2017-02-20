@@ -16,10 +16,19 @@ int main(void)
 
   std::cout << "Please enter first (x1,y1) coordinates followed by the coordinates (x2,y2) of the second point." << std::endl;
 
-  std::cin >> x1;
-  std::cin >> y1;
-  std::cin >> x2;
-  std::cin >> y2;
+   std::cin >> x1;
+   std::cin >> y1;
+   std::cin >> x2;
+   std::cin >> y2;
+
+ while(std::abs(x1-x2) < 0.000001 && std::abs(y1-y2) < 0.000001)
+   {
+     std::cout << "Arn't you a wise guy ehh? Try chosing two points alittle further apart please : )." << std::endl;
+       std::cin >> x1;
+       std::cin >> y1;
+       std::cin >> x2;
+       std::cin >> y2;
+   }
 
  if(std::abs(x1-x2) < 0.000001)
       {
@@ -49,6 +58,6 @@ int main(void)
 	    std::cout << " Equation of line perpendicular to first point entered is y = " << perpslope << "x + " << perpyintercept << "." <<  std::endl;
 	  }
       }
- 
+   
   return 0;
 }
