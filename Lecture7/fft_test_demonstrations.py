@@ -1,12 +1,12 @@
 import matplotlib.pyplot as plt
 
-from fft import fft
+from fft import fft, ifft
 from fft import fft_power
-from numpy import array
+from numpy import array, real
 import math
 import time
 
-plotfirst = True
+plotfirst = False
 
 if plotfirst == True : 
     # make some fake data as a single-frequency sinusoid
@@ -61,7 +61,7 @@ else :
     file.close()
     print ' read', len(lines), 'lines from', data_file_name
 
-    window = False
+    window = True
 
     yinput = []
     xinput = []
@@ -96,14 +96,37 @@ else :
     x = array([ float(i) for i in xrange(len(y)) ] )
     Y = fft(y)
 
+
+    #Change for different wiggles, makes it nicer/worse                                                                                                       
+    maxfreq = 100
+    #Now smooth the data                                                                                                                                     
+    for iY in range(maxfreq, len(Y)-maxfreq ) :
+        Y[iY] = complex(0,0)
+        #Y[iY] = Y[iY] * (0.5 - 0.5 * math.cos(2*math.pi*iY/float(N-1)))                                                                                      
+
+    #for iY in range(0,N) :                                                                                                                               
+    #    Y[iY] = Y[iY] * math.exp(-1.0*iY / 50.0)
+
+
     powery = fft_power(Y)
     powerx = array([ float(i) for i in xrange(len(powery)) ] )
 
     Yre = [math.sqrt(Y[i].real**2+Y[i].imag**2) for i in xrange(len(Y))]
 
+    ysmoothed = ifft(Y)
+    ysmoothedreal = real(ysmoothed)
+    
 
     plt.subplot(2, 1, 1)
     plt.plot( x, y )
+
+
+    ax1 = plt.subplot(2, 1, 1)
+    p1, = plt.plot( x, y )
+    p2, = plt.plot( x, ysmoothedreal )
+    ax1.legend( [p1,p2], ['Original', 'Smoothed'] )
+
+
 
     ax = plt.subplot(2, 1, 2)
     p1, = plt.plot( powerx, powery )
