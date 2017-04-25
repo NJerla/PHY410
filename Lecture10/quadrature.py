@@ -10,7 +10,7 @@ n2 = 201
 while n1 % 2 != 0 :
     n1 = int(raw_input( "Enter number of intervals desired for trapezoidal rule (must be even)" ))
 
-a = 0.1
+a = 0.0
 b = 1.0
 ans1 = trapezoid(exp, a, b, n1)
 print 'Trapezoidal rule = ' + str(ans1)
