@@ -6,13 +6,13 @@ import numpy as np
 def f (p) :
     x = p[0]
     y = p[1]
-    return x*x + 2 * y*y + 0.3 * cos(3 * pi * x) + 0.4 * cos(4 * pi * y)
+    return -(0.5)*(x*x + y*y) + (0.25)*(x*x*x*x + y*y*y*y)
 
 def df(p) :
     x = p[0]
     y = p[1]
-    x = 2 * x - 0.9 * pi * sin(3 * pi * x)
-    y = 4 * y - 1.6 * pi * sin(4 * pi * y)
+    x = -x + (x*x*x) + (x*y*y) 
+    y = -y + (y*y*y) + (x*x*y)
     return np.array( [x,y] )
 
 
